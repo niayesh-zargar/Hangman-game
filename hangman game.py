@@ -10,6 +10,8 @@ pc_word = random.choice(list_words)
 word = len (pc_word) * '-'
 word = list(word)
 GameRunning = True
+count = len(pc_word) + 2
+
 
 def user_try():
     user_try = input("the alphabet : ").lower() 
@@ -23,11 +25,18 @@ def user_try():
 
     
 while GameRunning :
-    if '-' in word :
-        print(word)
-        user_try()
-    else:
-        print(f'word : {pc_word}')
+    if count >= 0 :
+        
+        if '-' in word :
+            print(word)
+            user_try()
+        else:
+            print(f'word : {pc_word}')
+            GameRunning = False
+            print('thanks for playing.')
+        if '-' in word :
+            print(f"remainder try :{count}")
+        count -= 1
+    elif count < 0 :
         GameRunning = False
-        print('thanks for playing.')
-    
+        print(f"game over\nword was {pc_word}")
