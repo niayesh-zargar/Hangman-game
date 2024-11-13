@@ -21,20 +21,34 @@ def user_try():
                 word[index] = user_try
     else:
         print("wrong choose")
+def comleted_word():
+    global GameRunning
+    user_completed_word = input("did you already know this word? yes or no \n").lower()
+    if user_completed_word == 'yes' or user_completed_word == 'y':
+        user_completed_word = input('word : ')
+        if user_completed_word == pc_word :
+            print('cheers to you.')
+            GameRunning = False
+        else :
+            print('wrong one!')
+            
+    if user_completed_word == 'no' or user_completed_word =='n': 
+        print('')
         
-
     
 while GameRunning :
     if count >= 0 :
         
         if '-' in word :
-            print(word)
+            
             user_try()
+            print(word)
+            comleted_word()
         else:
             print(f'word : {pc_word}')
             GameRunning = False
             print('thanks for playing.')
-        if '-' in word :
+        if '-' in word  and GameRunning :
             print(f"remainder try :{count}")
         count -= 1
     elif count < 0 :
