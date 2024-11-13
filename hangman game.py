@@ -23,7 +23,7 @@ def user_try():
         print("wrong choose")
 def comleted_word():
     global GameRunning
-    user_completed_word = input("did you already know this word? yes or no \n").lower()
+    user_completed_word = input("did you already know this word? yes or no : \t").lower()
     if user_completed_word == 'yes' or user_completed_word == 'y':
         user_completed_word = input('word : ')
         if user_completed_word == pc_word :
@@ -35,7 +35,7 @@ def comleted_word():
     if user_completed_word == 'no' or user_completed_word =='n': 
         print('')
         
-    
+print(word)  
 while GameRunning :
     if count >= 0 :
         
@@ -43,7 +43,11 @@ while GameRunning :
             
             user_try()
             print(word)
-            comleted_word()
+            if '-' not in word :
+                print(f'cheers to you!\nword was {pc_word}')
+                GameRunning = False 
+            if '-' in word : 
+                comleted_word()
         else:
             print(f'word : {pc_word}')
             GameRunning = False
